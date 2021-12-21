@@ -7,7 +7,7 @@ Camera4Kivy QR Example
 
 Long press or double tap on a highlighed QR, this opens the url encoded in the QR code. Mouse users need to have the mouse pointer inside the highlighted QR.
 
-Available on most of the [usual platforms](https://github.com/Android-for-Python/Camera4Kivy/#tested-platforms).
+Available on most of the [usual platforms](https://github.com/Android-for-Python/Camera4Kivy/#tested-examples-and-platforms).
 
 On a desktop the example assumes a builtin camera facing the user, so the Preview is mirrored. If you want to point a freely mounted camera at a QR code you may want to set the [Camera4Kivy mirror option False]((https://github.com/Android-for-Python/Camera4Kivy/#mirror)). 
 
@@ -15,7 +15,7 @@ The example demonstrates basic usage of the image analysis api. Analyzing image 
 
 # Install
 
-This example depends on Camera4Kivy. **[Read about Camera4Kivy](https://github.com/Android-for-Python/Camera4Kivy#camera4kivy)** because, depending on the platform you may need to install a [camera provider](https://github.com/Android-for-Python/Camera4Kivy#dependencies). In addition the example depends on pyzbar and pillow.
+This example depends on Camera4Kivy. **[Read about Camera4Kivy](https://github.com/Android-for-Python/Camera4Kivy#camera4kivy)** because, depending on the platform you may need to install a [camera provider](https://github.com/Android-for-Python/camera4kivy#camera-provider). In addition the example depends on pyzbar and pillow.
 
 ## Windows
 
