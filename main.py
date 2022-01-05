@@ -47,7 +47,7 @@ class MyApp(App):
         else:
             permission = True
         if permission:
-            self.qrreader.connect_camera(analyze_resolution = 640,
+            self.qrreader.connect_camera(analyze_pixels_resolution = 640,
                                          enable_analyze_pixels = True)
 
     def on_start(self):
