@@ -35,10 +35,10 @@ class QRReader(Preview, CommonGestures):
             if 'https://' in text or 'http://' in text:
                 x, y, w, h = barcode.rect
                 # Map Zbar coordinates to Kivy coordinates
-                y = size[1] -y -h
+                y = max(size[1] -y -h, 0)
                 # Map Analysis coordinates to Preview coordinates
                 if mirror:
-                    x = size[0] -x -w
+                    x = max(size[0] -x -w, 0)
                 x = round(x * scale + pos[0])
                 y = round(y * scale + pos[1])
                 w = round(w * scale)
