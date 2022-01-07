@@ -55,9 +55,6 @@ class QRReader(Preview, CommonGestures):
     ################################
         
     def canvas_instructions_callback(self, texture, size, pos):
-        # Add the preview image 
-        Color(1,1,1,1)
-        Rectangle(texture= texture, size = size, pos = pos)
         # Add the analysis annotations
         Color(1,0,0,1)
         for r in self.annotations:
