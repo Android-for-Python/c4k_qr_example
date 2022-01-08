@@ -21,13 +21,13 @@ class QRReader(Preview, CommonGestures):
     # Analyze a Frame - NOT on UI Thread
     ####################################
     
-    def analyze_pixels_callback(self, pixels, size, pos, scale, mirror):
+    def analyze_pixels_callback(self, pixels, image_size, image_pos, scale, mirror):
         # pixels : Kivy Texture pixels
-        # size   : pixels size (w,h)
-        # pos    : location of Texture in Preview Widget (letterbox)
+        # image_size   : pixels size (w,h)
+        # image_pos    : location of Texture in Preview Widget (letterbox)
         # scale  : scale from Analysis resolution to Preview resolution
         # mirror : true if Preview is mirrored
-        pil_image = Image.frombytes(mode='RGBA', size=size, data= pixels)
+        pil_image = Image.frombytes(mode='RGBA', size=image_size, data= pixels)
         barcodes = pyzbar.decode(pil_image, symbols=[ZBarSymbol.QRCODE])
         found = []
         for barcode in barcodes:
@@ -35,12 +35,12 @@ class QRReader(Preview, CommonGestures):
             if 'https://' in text or 'http://' in text:
                 x, y, w, h = barcode.rect
                 # Map Zbar coordinates to Kivy coordinates
-                y = max(size[1] -y -h, 0)
+                y = max(image_size[1] -y -h, 0)
                 # Map Analysis coordinates to Preview coordinates
                 if mirror:
-                    x = max(size[0] -x -w, 0)
-                x = round(x * scale + pos[0])
-                y = round(y * scale + pos[1])
+                    x = max(image_size[0] -x -w, 0)
+                x = round(x * scale + image_pos[0])
+                y = round(y * scale + image_pos[1])
                 w = round(w * scale)
                 h = round(h * scale)
                 found.append({'x':x, 'y':y, 'w':w, 'h':h, 't':text})
@@ -54,7 +54,7 @@ class QRReader(Preview, CommonGestures):
     # Annotate Screen - on UI Thread
     ################################
         
-    def canvas_instructions_callback(self, texture, size, pos):
+    def canvas_instructions_callback(self, texture, tex_size, tex_pos):
         # Add the analysis annotations
         Color(1,0,0,1)
         for r in self.annotations:
