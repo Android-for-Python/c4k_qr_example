@@ -35,9 +35,9 @@ This example depends on Camera4Kivy. **[Read about Camera4Kivy](https://github.c
 
 ## Android
 
-Camera4Kivy depends on the 'master' version of Buildozer. Currently `1.2.0.dev0`
+Camera4Kivy depends on Buildozer 1.3.0 or later
 
-`pip3 install git+https://github.com/kivy/buildozer.git`
+`pip3 install buildozer`
 
 `sudo apt-get install gettext`  some hosts already have this installed.
 
