@@ -44,4 +44,21 @@ Camera4Kivy depends on Buildozer 1.3.0 or later
 The example includes a [camera provider](https://github.com/Android-for-Python/camera4kivy#android-camera-provider) and a [buildozer.spec](https://github.com/Android-for-Python/camera4kivy#buildozerspec).
 
 
+## iOS
 
+**This example is not available on iOS due to these `kivy-ios` issues [676](https://github.com/kivy/kivy-ios/issues/676) and [681](https://github.com/kivy/kivy-ios/issues/681).** Use of the image analysis api, and of Python's Webbrowser have not been tested - expect the unexpected.
+
+If/when these issues are addressed the install instructions will be similar to:
+
+```
+toolchain build libzbar
+toolchain pip install pillow pyzbar camera4kivy
+```
+
+Permission to use the camera is **required** by iOS. To enable permission edit `<project>-ios/<project-Info.plist`, this file is created by Xcode. This entry must be added:
+
+To enable use of the Camera add:
+```
+        <key>NSCameraUsageDescription</key>
+	<string> </string>
+```
