@@ -52,10 +52,10 @@ If/when these issues are addressed the install instructions will be similar to:
 
 ```
 toolchain build libzbar
-toolchain pip install pillow pyzbar camera4kivy
+toolchain pip3 install pillow pyzbar camera4kivy
 ```
 
-Permission to use the camera is **required** by iOS. To enable permission edit `<project>-ios/<project-Info.plist`, this file is created by Xcode. This entry must be added:
+Permission to use the camera is **required** by iOS. To enable permission edit `<project>-ios/<project-Info.plist`. This entry must be added:
 
 To enable use of the Camera add:
 ```
