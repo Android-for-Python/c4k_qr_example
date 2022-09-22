@@ -64,10 +64,7 @@ class QRReader(Preview, CommonGestures):
     # User Touch Event - on UI Thread
     #################################
 
-    def cg_long_press(self, touch, x, y):
-        self.open_browser(x, y)
-
-    def cg_double_tap(self, touch, x, y):
+    def cgb_select(self, touch, x, y, lp):
         self.open_browser(x, y)
 
     def open_browser(self, x, y):
