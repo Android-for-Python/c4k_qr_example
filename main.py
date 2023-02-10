@@ -3,8 +3,7 @@ from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
 from kivy.utils import platform
 from kivy.clock import Clock
-
-from qrreader import QRReader
+from applayout import AppLayout
 from android_permissions import AndroidPermissions
 
 if platform == 'android':
@@ -24,7 +23,7 @@ if platform == 'android':
             # Show status bar 
             option = View.SYSTEM_UI_FLAG_VISIBLE
         mActivity.getWindow().getDecorView().setSystemUiVisibility(option)
-elif platform != 'ios':
+else:
     # Dispose of that nasty red dot, required for gestures4kivy.
     from kivy.config import Config 
     Config.set('input', 'mouse', 'mouse, disable_multitouch')
@@ -32,11 +31,10 @@ elif platform != 'ios':
 class MyApp(App):
     
     def build(self):
-        self.qrreader = QRReader(letterbox_color = 'steelblue',
-                                 aspect_ratio = '16:9')
+        self.layout = AppLayout()
         if platform == 'android':
             Window.bind(on_resize=hide_landscape_status_bar)
-        return self.qrreader
+        return self.layout
 
     def on_start(self):
         self.dont_gc = AndroidPermissions(self.start_app)
@@ -47,11 +45,10 @@ class MyApp(App):
         Clock.schedule_once(self.connect_camera)
 
     def connect_camera(self,dt):
-        self.qrreader.connect_camera(analyze_pixels_resolution = 640,
-                                     enable_analyze_pixels = True)
+        self.layout.qr_reader.connect_camera(enable_analyze_pixels = True)
 
     def on_stop(self):
-        self.qrreader.disconnect_camera()
+        self.layout.qr_reader.disconnect_camera()
 
 MyApp().run()
 

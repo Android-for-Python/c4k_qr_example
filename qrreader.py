@@ -27,6 +27,7 @@ class QRReader(Preview, CommonGestures):
         # image_pos    : location of Texture in Preview Widget (letterbox)
         # scale  : scale from Analysis resolution to Preview resolution
         # mirror : true if Preview is mirrored
+
         pil_image = Image.frombytes(mode='RGBA', size=image_size, data= pixels)
         barcodes = pyzbar.decode(pil_image, symbols=[ZBarSymbol.QRCODE])
         found = []
@@ -44,11 +45,16 @@ class QRReader(Preview, CommonGestures):
                 w = round(w * scale)
                 h = round(h * scale)
                 found.append({'x':x, 'y':y, 'w':w, 'h':h, 't':text})
+
         self.make_thread_safe(list(found)) ## A COPY of the list
 
     @mainthread
     def make_thread_safe(self, found):
-        self.annotations = found
+        if self.camera_connected:
+            self.annotations = found
+        else:
+            # Clear local state so no thread related ghosts on re-connect
+            self.annotations = []
 
     ################################
     # Annotate Screen - on UI Thread
