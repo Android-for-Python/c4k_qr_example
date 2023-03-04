@@ -45,7 +45,8 @@ class MyApp(App):
         Clock.schedule_once(self.connect_camera)
 
     def connect_camera(self,dt):
-        self.layout.qr_reader.connect_camera(enable_analyze_pixels = True)
+        self.layout.qr_reader.connect_camera(enable_analyze_pixels = True,
+                                             enable_video = False)
 
     def on_stop(self):
         self.layout.qr_reader.disconnect_camera()
