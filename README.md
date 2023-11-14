@@ -3,6 +3,8 @@ Camera4Kivy QR Example
 
 *Everything You Need to Read a Restaurant Menu.*
 
+**2023-11-13 This repository is archived.**
+
 # Overview
 
 Long press or double tap on a highlighed QR, this opens the url encoded in the QR code. Mouse users need to have the mouse pointer inside the highlighted QR.
